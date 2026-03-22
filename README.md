@@ -159,6 +159,7 @@ Pull requests and plugin contributions are welcome! Please open an issue first t
 - **[DNA](https://gitee.com/sharpeter/DNA)**
 - **Gaoji Assistant**
 - **[affggh](https://github.com/affggh/fspatch)**
+- **[🅺🅰🆂🅷🅸 天堂之旅](https://t.me/kakashi1v1)**
 
 ---
 
