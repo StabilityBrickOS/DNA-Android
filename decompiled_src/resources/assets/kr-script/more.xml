@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<group title="Partition Management">
+    <action>
+        <title>Extract img file</title>
+        <set>samples/image.sh extract</set>
+        <param name="IMG" title="Please select a partition. Multiple selection is supported:" multiple="true" options-sh="samples/image.sh name" required="true"/>
+    </action>
+    
+    <action>
+        <title>Flash img file</title>
+        <set>samples/image.sh flash</set>
+        <param name="CQ" label="Restart device automatically after finishing the process" type="checkbox" />
+        <param name="CQ1" label="Reboot to recovery automatically after finishing the process" type="checkbox" />
+        <param name="IMG" title="Note: Please do not flash partitions such as system" options-sh="samples/image.sh name" required="true"/>
+        <param name="Brush_in" type="file" suffix="img" editable="true" required="true" title="You can enter the absolute path of the img file or use the file selector to select the file" desc="Tips: You can use [MT Manager] to long press the directory or file --> click Properties --> click the directory to copy the absolute path of the directory, and long press the directory or long press the name to copy the absolute path of the file." required="true"/>
+    </action>
+</group>
+<group>
+    <action>
+        <title>Script Executor</title>
+        <summary>Custom Commands</summary>
+        <set>samples/shell.sh</set>
+        <param name="TO" placeholder="Custom Commands" value-sh="cat $START_DIR/SHE.sh" requiret="true" />
+        <param name="shell" placeholder="Custom Commands" value="" requiret="true" />
+    </action>
+</group>
+<group title="About Tools">
+    <page title="Special thanks" config="file:///android_asset/kr-script/thank.xml" />
+</group>

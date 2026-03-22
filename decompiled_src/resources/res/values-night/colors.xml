@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">@android:color/background_device_default_dark</color>
+    <color name="colorPrimary">@android:color/background_device_default_dark</color>
+    <color name="colorPrimaryDark">@android:color/background_device_default_light</color>
+    <color name="splash_bg_color">#222222</color>
+    <color name="confirm_dialog_color">#222222</color>
+    <color name="wb">#ffffff</color>
+</resources>

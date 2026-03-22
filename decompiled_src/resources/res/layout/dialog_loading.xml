@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/confirm_dialog_bg"
+        android:padding="26dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="12dp"
+        android:keepScreenOn="true">
+        <ProgressBar
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/dialog_app_details_progress"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="30dp"
+            android:max="100"
+            android:indeterminate="false"/>
+        <TextView
+            android:textSize="15dp"
+            android:id="@+id/dialog_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/execute_wait"
+            android:minLines="2"
+            android:textAlignment="center"/>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/kr_param_value"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+    <TextView
+        android:textColor="?android:attr/textColorPrimary"
+        android:gravity="center_vertical"
+        android:id="@+id/kr_param_single_select"
+        android:background="@drawable/abc_spinner_mtrl_am_alpha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="35dp"
+        android:hint="@string/kr_please_select"/>
+</LinearLayout>

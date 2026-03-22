@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resource dir="file:///android_asset/samples" />
+<group title="Plugin Features">
+    <page config-sh="samples/modun.sh" title="Plugin Features" desc="Local plugins can be imported using file.zip2">
+        <option type="file" style="fab" suffix="zip2" auto-off="true" reload="true"/>
+    <handler>
+        
+        dna unzip $file $START_DIR/module
+    </handler>
+    </page>
+</group>
+
+<group title="Unpacking Menu">
+    <action interruptible="false">
+        <title>Unpack payload bin</title>
+        <set>dna dumper --partition "$img" --delete $silence --auto $auto $DNA_PRO/payload.bin</set>
+        <param name="silence" label="Delete original file after finishing" type="checkbox" />
+        <param name="auto" label="Automatically unpack extracted IMG" type="checkbox" />
+        <param name="img" title="Please select the partition to extract. If not selected, all：" separator="," options-sh="dna dumper --list $DNA_PRO/payload.bin" multiple="true"/>
+        <lock>
+            if [[ -f $DNA_PRO/payload.bin ]]; then
+                echo 'unlocked'
+            else
+                echo 'payload.bin not found'
+            fi
+        </lock>
+    </action>
+    
+    <action interruptible="false">
+        <title>Unpack br</title>
+        <set>dna extract $BR --delete $silence</set>
+        <param name="silence" label="Delete original file after finishing" type="checkbox" />
+        <param name="BR" title="Please select br file：" separator="," options-sh="samples/findfile.sh br" desc="Put your file inside /sdcard/DNA project path" required="true" multiple="true"/>                
+    </action>
+
+    <action interruptible="false">
+        <title>Unpack dat</title>
+        <set>dna extract $DAT --delete $silence</set>
+        <param name="silence" label="Delete original file after finishing" type="checkbox" />
+        <param name="DAT" title="Please select dat file：" separator="," options-sh="samples/findfile.sh dat" desc="put your file inside /sdcard/DNA project path" required="true" multiple="true"/>              
+    </action>
+
+    <action interruptible="false">
+        <title>Unpack img</title>
+        <set>dna extract $IMG --delete $silence</set>
+        <param name="silence" title="Delete original file after finishing" label="Delete original file after finishing" type="checkbox" />
+        <param name="IMG" title="Please select img file：" separator="," options-sh="samples/findfile.sh img" desc="Put your file inside /sdcard/DNA project path. The tool automatically identifies the img format and unpacks it (While unpacking super, only the a_partition files will be extracted.)" required="true" multiple="true"/>
+    </action>
+    <action interruptible="false">
+        <title>Unpack super</title>
+        <set>dna lpunpack --partition "$img" --delete $silence --auto $auto $DNA_PRO/super.img</set>
+        <param name="silence" label="Delete original file after finishing" type="checkbox" />
+        <param name="auto" label="Automatically unpack extracted IMG" type="checkbox" />
+        <param name="img" title="Please select the partition to extract. If not selected, all：" separator="," options-sh="dna lpunpack --list $DNA_PRO/super.img" multiple="true"/>
+        <lock>
+            if [[ -f $DNA_PRO/super.img ]]; then
+                echo 'unlocked'
+            else
+                echo 'super.img not found'
+            fi
+        </lock>
+    </action>    
+</group>
+
+<group title="Repacking Menu">
+    <action interruptible="false">
+        <title>Repack single partition</title>
+        <set>dna repack $IMG_DIR --read $Read --auto $Pack --format $img_type --type $repack_from --br $brze --erofs $erofsze --mode $type --compress $test --delavb $test1 --convert $tool</set>
+        <param name="IMG_DIR" options-sh="samples/findfile.sh dir" desc="IMG repacking format will be detected automatically" separator="," required="true" multiple="true"/>
+        <param name="tool" label="Repack type">
+             <option value="0"> ext4 </option>
+             <option value="1"> erofs </option>
+             <option value="2"> f2fs </option>
+        </param>        
+        <param name="Read" label="RW" desc="Note: Use only if you are repacking to ext4"  >
+             <option value="1">Read_Write---rw</option>
+             <option value="0">Read_Only---ro</option>
+        </param>
+        <param name="Pack" label="Size" desc="Note: Use only if you are repacking to ext4" >
+             <option value="1" >Automatic</option>
+             <option value="0" >Original size</option>
+        </param>
+        <param name="img_type" label="img format" desc="Note: Use only if you are repacking to ext4 or erofs" >
+             <option value="0" >Raw</option>
+             <option value="1" >Sparse</option>
+        </param>
+        <param name="repack_from" label="File format" desc="Note: Use only if you are repacking to ext4 or erofs" >
+             <option value="0" >IMG</option>
+             <option value="1" >DAT</option>
+             <option value="2" >BR</option>
+        </param>
+        <param name="brze" label="br Compression level" value="3" desc="Note: Larger number may end up doing repacking process slow" type="seekbar" max="7" min="1"/>
+        <param name="erofsze" label="Erofs(f2fs) compression level" value="8" desc="Note: Use only if you are repacking to Erofs(f2fs)"  type="seekbar" max="9" min="0"/>
+        <param name="type" label="Type" desc="Note: Use only if you are repacking to Erofs" >
+             <option value="lz4hc" >lz4hc</option>
+             <option value="lz4" >lz4</option>
+             <option value="lzma" >lzma</option>
+        </param>
+        <param name="test" label="Compress ext4 img space" desc="Note: Use only if you are repacking to ext4" type="switch" />
+        <param name="test1" label="Remove avb data encryption" desc="Note: This switch will modify fstab file, which is not universal and may cause bootloop." type="switch" />
+    </action>
+    <action interruptible="false">
+        <title>Repack super.img</title>
+        <set>dna lpmake --type $type --format $from --super_size $size --super_group $super_group $IMG_NAME</set>
+        <param name="type" label="Type" >
+             <option value="A"> a_only</option>
+             <option value="AB"> ab</option>
+             <option value="VAB"> virtual_ab</option>
+        </param>
+        <param name="from" label="Format" >
+             <option value="1"> sparse </option>
+             <option value="0"> raw </option>
+        </param>
+        <param name="size" required="true" value="8.5" label="super.img total size" desc="Enter your super img size, default value is 8.5G."  type="float"/>
+        <param name="super_group" required="true" value="qti_dynamic_partitions" label="Cluster name" desc="If you don't know, just use the default." />
+        <param name="IMG_NAME" title="Please select the IMG file to be repacked：" options-sh="samples/findfile.sh img" desc="Put your file in the /sdcard/DNA project path" separator="," required="true" multiple="true"/>
+    </action>
+<group>
+
+<group title="Format Conversion">
+    <action interruptible="false">
+        <title>img to simg</title>
+        <set>samples/img_ov_simg.sh</set>
+        <param name="IMG" title="Please select IMG file：" separator="," options-sh="samples/findfile.sh img" desc="Put your files in the /sdcard/DNA project path" required="true" multiple="true"/>
+    </action>
+
+    <action interruptible="false">
+        <title>img to dat,br conversion</title>
+        <set>dna convert $IMG --delete $silence --type $from --br $brze</set>
+        <param name="silence" title="Delete source file" label="Delete original file after finishing" type="checkbox" />
+        <param name="from" label="Type" >
+             <option value="0" >DAT</option>
+             <option value="1" >BR</option>
+        </param>
+        <param name="brze" required="true" value="3" label="BR Compression Level" desc="Note: Note: Larger number may end up doing repacking process slow" type="seekbar" max="7" min="1"/>
+        <param name="IMG" title="Please select IMG file：" separator="," options-sh="samples/findfile.sh img" desc="Put your files in the /sdcard/DNA project path" required="true" multiple="true"/>              
+    </action>
+
+        <action interruptible="false">
+        <title>zst-img Conversion</title>
+        <set>$START_DIR/samples/zstd_img.sh</set>
+        <param name="silence" label="Delete source file" type="checkbox" />
+        <param name="ZST" title="Please select file:" 
+           options-sh="samples/findfile.sh zst_img" 
+           desc="Put your files in the /sdcard/DNA project path" 
+           required="true" multiple="true"/>
+        <param name="level" required="true" value="3" label="zstd compression level" desc="Note: The larger the number, the slower the compression!" type="seekbar" max="19" min="0"/>
+    </action>
+
+    <action>
+        <title>Merge Sparse Segments</title>
+        <set>$START_DIR/samples/merge_superchunk.sh</set>
+        <desc>Merge segmented IMG into IMG</desc>
+        <param name="silence" label="Delete source files" type="checkbox" />
+        <param name="IMG" title="Please select the segmented IMG file" 
+            options-sh="samples/findfile.sh split_sparse" 
+            desc="Identify the files in the /sdcard/DNA project path" 
+            required="true" multiple="true"/>
+    </action>
+</group>

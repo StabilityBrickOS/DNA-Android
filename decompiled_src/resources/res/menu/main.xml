@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/graph"
+        android:id="@+id/action_graph"
+        android:visible="true"
+        android:orderInCategory="100"
+        android:title=""
+        app:showAsAction="ifRoom"/>
+    <item
+        android:icon="@drawable/power"
+        android:id="@+id/option_menu_reboot"
+        android:visible="true"
+        android:orderInCategory="100"
+        android:title=""
+        app:showAsAction="ifRoom"/>
+    <item
+        android:icon="@drawable/info"
+        android:id="@+id/option_menu_info"
+        android:visible="true"
+        android:orderInCategory="100"
+        android:title=""
+        app:showAsAction="ifRoom"/>
+</menu>

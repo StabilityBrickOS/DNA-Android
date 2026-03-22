@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <group title="Special thanks, in no particular order, if anyone is missing then please let me know">
+        <page link="https://github.com/helloklf/kr-scripts">
+            <title>「kr-scripts」、Github：helloklf | Coolapk：嘟嘟斯基</title>
+            <desc>This app is based on the "kr-scripts" framework, the original software name is: "PIO"</desc>
+        </page>
+        <page link="">
+            <title>TIK Toolbox Group</title>
+            <desc>Thanks to the group members for their testing and help, I can't list them one by one</desc>
+        </page>
+        <page link="https://gitee.com/yeliqin666/TIK">
+            <title>TIK Toolbox</title>
+            <desc>Some of the codes are used from TIK2 source code, thanks</desc>
+        </page>
+        <page link="https://github.com/topjohnwu/Magisk">
+            <title>magiskboot</title>
+        </page>
+        <page link="https://github.com/xpirt">
+           <title>sdat2img and img2sdat</title>
+        </page>
+        <page link="https://github.com/sekaiacg/erofs-extract">
+           <title>erofs-extract</title>
+        </page>
+        <page link="https://gitee.com/sharpeter/DNA">
+           <title>DNA</title>
+           <desc>I used the name of @温柔的悲好大佬's DNA toolbox to pay tribute to him！</desc>
+        </page>
+        <page link="">
+           <title>Computer Assistant</title>
+           <desc>The original author of the Assistant: @情非得矣c , we used some of codes from the tool！</desc>
+        </page>
+        <page link="https://github.com/affggh/fspatch">
+           <title>affggh</title>
+           <desc>@affggh's fspatch.py to patch the permission file and github open source tools</desc>
+        </page>
+        <page link="https://t.me/kakashi1v1">
+           <title>🅺🅰🆂🅷🅸 天堂之旅</title>
+           <desc>for English translation</desc>
+        </page>
+    </group>
+
+</root>
