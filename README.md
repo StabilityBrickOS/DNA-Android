@@ -100,8 +100,8 @@ DNA-Android supports local plugin imports via `.zip2` files, allowing the commun
 |------|-------------|------------|
 | ![Home](screenshots/home.png) | ![Project Menu](screenshots/project_menu.png) | ![Patch Menu](screenshots/patch_menu.png) |
 
-| Format Conversion | ROM Menu | Jar menu | Others |
-|------------------|----------|--------|
+| Format Conversion | ROM Menu | Jar Menu | Others |
+|------------------|----------|----------|--------|
 | ![Conversion](screenshots/conversion.png) | ![ROM Menu](screenshots/rom_menu.png) | ![Jar menu](screenshots/jar.png) | ![Others](screenshots/others.png) |
 
 ---
