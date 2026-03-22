@@ -102,7 +102,7 @@ DNA-Android supports local plugin imports via `.zip2` files, allowing the commun
 
 | Format Conversion | ROM Menu | Others |
 |------------------|----------|--------|
-| ![Conversion](screenshots/conversion.png) | ![ROM Menu](screenshots/rom_menu.png) | ![Others](screenshots/others.png) |
+| ![Conversion](screenshots/conversion.png) | ![ROM Menu](screenshots/rom_menu.png) | ![Jar menu](screenshots/jar.png) | ![Others](screenshots/others.png) |
 
 ---
 
@@ -148,9 +148,17 @@ Pull requests and plugin contributions are welcome! Please open an issue first t
 
 ---
 
-## 🙏 Special Thanks
+## 🙏 Credits
 
-Thanks to all the open-source developers and tools that made this project possible, and to the Android modding community for continuous inspiration and feedback.
+- **@SoutaEver**
+- **[magiskboot](https://github.com/topjohnwu/Magisk)**
+- **[kr-scripts](https://github.com/helloklf/kr-scripts)**
+- **[TIK toolbox](https://gitee.com/yeliqin666/TIK)**
+- **[sdat2img and img2sdat](https://github.com/xpirt)**
+- **[erofs-extract](https://github.com/sekaiacg/erofs-extract)**
+- **[DNA](https://gitee.com/sharpeter/DNA)**
+- **Gaoji Assistant**
+- **[affggh](https://github.com/affggh/fspatch)**
 
 ---
 
